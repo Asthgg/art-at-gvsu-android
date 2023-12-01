@@ -3,6 +3,7 @@ package edu.gvsu.art.client.repository
 import edu.gvsu.art.client.Artwork
 import edu.gvsu.art.client.LatLng
 import edu.gvsu.art.client.common.asUrls
+import edu.gvsu.art.client.common.listURL
 import edu.gvsu.art.client.common.optionalURL
 import edu.gvsu.art.client.data.Artworks
 
@@ -26,5 +27,9 @@ internal val Artworks.toDomainModel: Artwork
         mediaSmall = optionalURL(media_small_url),
         mediaMedium = optionalURL(media_medium_url),
         mediaLarge = optionalURL(media_large_url),
-        thumbnail = optionalURL(thumbnail_url)
+        thumbnail = optionalURL(thumbnail_url),
+        arDigitalAsset = optionalURL(ar_digital_asset),
+        ar3DFiles = listURL(ar_3d_file),
+        arCoordinates = listOf(),
+        arType = ar_type ?: "artwork"
     )

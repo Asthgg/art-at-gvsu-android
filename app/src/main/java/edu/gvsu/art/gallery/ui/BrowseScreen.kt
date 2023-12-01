@@ -5,7 +5,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
@@ -42,7 +44,7 @@ fun BrowseScreen(navController: NavController) {
     val context = LocalContext.current
     Column(
         modifier = Modifier
-            .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
     ) {
         TopAppBar(
             title = {},
@@ -74,6 +76,10 @@ fun BrowseScreen(navController: NavController) {
         )
         Spacer(Modifier.height(8.dp))
 
+        BrowseAction(text = R.string.home_augmented_art_index) {
+            navController.navigate(Route.BrowseAugmentedArtworkIndex)
+        }
+
         BrowseAction(text = R.string.home_featured_index) {
             navController.navigate(Route.BrowseArtworkIndex)
         }
@@ -89,8 +95,8 @@ fun BrowseAction(@StringRes text: Int, onClick: () -> Unit) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .padding(horizontal = 24.dp, vertical = 16.dp)
-                .fillMaxWidth()
+                    .padding(horizontal = 24.dp, vertical = 16.dp)
+                    .fillMaxWidth()
         ) {
             Text(stringResource(text))
             Icon(
@@ -116,14 +122,14 @@ fun HomeFeaturedImageView(
     }
     Surface(
         modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .shadow(elevation = 3.dp, shape = RoundedCornerShape(10.dp))
-            .aspectRatio(1f)
+                .padding(horizontal = 16.dp)
+                .shadow(elevation = 3.dp, shape = RoundedCornerShape(10.dp))
+                .aspectRatio(1f)
     ) {
         Box(
             modifier = Modifier
-                .background(OffWhiteSecondary, RoundedCornerShape(size = 10.dp))
-                .clickable { navigateToArtwork() }
+                    .background(OffWhiteSecondary, RoundedCornerShape(size = 10.dp))
+                    .clickable { navigateToArtwork() }
         ) {
             Image(
                 painter = rememberRemoteImage(currentArtwork.mediaLarge) {
@@ -132,15 +138,15 @@ fun HomeFeaturedImageView(
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .aspectRatio(1f)
-                    .fillMaxWidth()
+                        .aspectRatio(1f)
+                        .fillMaxWidth()
             )
             FeaturedTitle(
                 artwork = currentArtwork,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.BottomStart)
-                    .aspectRatio(1f)
+                        .fillMaxWidth()
+                        .align(Alignment.BottomStart)
+                        .aspectRatio(1f)
             )
         }
     }
@@ -150,17 +156,17 @@ fun HomeFeaturedImageView(
 private fun FeaturedTitle(artwork: Artwork, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .clip(RectangleShape)
-            .background(Brush.verticalGradient(
-                0f to Color.Transparent,
-                0.5f to Color.Transparent,
-                1.0f to Color.Black.copy(alpha = 0.6f)
-            ))
+                .clip(RectangleShape)
+                .background(Brush.verticalGradient(
+                        0f to Color.Transparent,
+                        0.5f to Color.Transparent,
+                        1.0f to Color.Black.copy(alpha = 0.6f)
+                ))
     ) {
         Column(
             modifier = Modifier
-                .align(Alignment.BottomStart)
-                .padding(16.dp)
+                    .align(Alignment.BottomStart)
+                    .padding(16.dp)
         ) {
             Text(
                 artwork.name,

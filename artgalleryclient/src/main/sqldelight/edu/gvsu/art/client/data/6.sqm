@@ -1,1 +1,4 @@
--- no-op to upgrade database to version 7
+ALTER TABLE Artworks ADD COLUMN ar_digital_asset TEXT;
+ALTER TABLE Artworks ADD COLUMN ar_3d_file TEXT;
+ALTER TABLE Artworks ADD COLUMN ar_coordinates TEXT;
+ALTER TABLE Artworks ADD COLUMN ar_type TEXT;

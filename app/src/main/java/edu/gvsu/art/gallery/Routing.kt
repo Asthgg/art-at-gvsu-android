@@ -15,6 +15,7 @@ object Route {
     const val BrowseIndex = "browse"
     const val BrowseLocationDetail = "browse/locations/{location_id}?display_name={display_name}"
     const val BrowseLocationsIndex = "browse/locations"
+    const val BrowseAugmentedArtworkIndex = "browse/artworks"
     const val FavoritesArtistDetail = "favorites/artists/{artist_id}"
     const val FavoritesArtworkDetail = "favorites/artworks/{artwork_id}"
     const val FavoritesIndex = "favorites"

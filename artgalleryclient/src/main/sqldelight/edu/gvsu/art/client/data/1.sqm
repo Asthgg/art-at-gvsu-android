@@ -21,5 +21,9 @@ CREATE TABLE  Artworks (
   media_medium_url TEXT,
   media_large_url TEXT,
   thumbnail_url TEXT,
-  created_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  ar_digital_asset TEXT,
+  ar_3d_file TEXT,
+  ar_coordinates TEXT,
+  ar_type TEXT
 );

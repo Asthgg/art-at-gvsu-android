@@ -24,7 +24,11 @@ data class Artwork(
     val mediaSmall: URL? = null,
     val mediaMedium: URL? = null,
     val mediaLarge: URL? = null,
-    val thumbnail: URL? = null
+    val thumbnail: URL? = null,
+    val arDigitalAsset: URL? = null,
+    val ar3DFiles: List<URL> = listOf(),
+    val arCoordinates: List<Double> = listOf(),
+    val arType: String = ""
 ) : Parcelable {
     val formattedArtistName: String
         get() {

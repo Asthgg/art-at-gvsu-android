@@ -28,6 +28,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import edu.gvsu.art.gallery.ui.ArtistDetailScreen
 import edu.gvsu.art.gallery.ui.ArtworkDetailScreen
+import edu.gvsu.art.gallery.ui.AugmentedArtIndexScreen
 import edu.gvsu.art.gallery.ui.BrowseScreen
 import edu.gvsu.art.gallery.ui.FavoriteIndexScreen
 import edu.gvsu.art.gallery.ui.FeaturedArtIndexScreen
@@ -142,6 +143,7 @@ fun NavGraphBuilder.routing(navController: NavController) {
 @ExperimentalPagerApi
 @ExperimentalComposeUiApi
 fun NavGraphBuilder.featuredGraph(navController: NavController) {
+
     composable(TabScreen.Browse.route) {
         BrowseScreen(navController)
     }
@@ -157,6 +159,11 @@ fun NavGraphBuilder.featuredGraph(navController: NavController) {
     }
     composable(Route.BrowseArtworkIndex) {
         FeaturedArtIndexScreen(navController)
+    }
+    composable(Route.BrowseAugmentedArtworkIndex) {
+        AugmentedArtIndexScreen(
+                navController
+        )
     }
     artworkDetailScreen(Route.FeaturedArtworkDetail, navController)
     artistDetailScreen(Route.FeaturedArtistDetail, navController)

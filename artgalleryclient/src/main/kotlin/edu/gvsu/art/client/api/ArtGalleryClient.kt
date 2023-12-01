@@ -21,6 +21,9 @@ interface ArtGalleryClient {
     suspend fun fetchFeaturedArt(): ArtworkSearchResult
 
     @GET("objectSearch")
+    suspend fun fetchAugmentedArt(): ArtworkSearchResult
+
+    @GET("objectSearch")
     suspend fun fetchArtworkSearch(@Query("q") query: String): ArtworkSearchResult
 
     @GET("locationcampusSearch?q=*")

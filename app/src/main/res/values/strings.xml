@@ -7,10 +7,12 @@
     <string name="navigation_Campuses">Campuses</string>
     <string name="navigation_Settings">Settings</string>
     <string name="navigation_featured_index">All Featured</string>
+    <string name="navigation_augmented_art_index">Augmented Art</string>
 
     <!-- browse -->
     <string name="home_browse_campuses">Browse Campuses</string>
     <string name="home_featured_index">View All Featured</string>
+    <string name="home_augmented_art_index">Augmented Art</string>
 
     <!-- campuses -->
     <string name="location_detail_empty_message">Location is empty</string>

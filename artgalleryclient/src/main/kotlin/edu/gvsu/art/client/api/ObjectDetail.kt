@@ -38,5 +38,9 @@ data class ObjectDetail(
     val rg_small: String? = "",
     val rg_medium: String? = "",
     val rg_large: String? = "",
-    @Json(name = "rg_x-large") val rg_xlarge: String? = ""
+    @Json(name = "rg_x-large") val rg_xlarge: String? = "",
+    val ar_digital_asset: String? = "",
+    val ar_3d_file: String? = "",
+    val ar_coordinates: String? = "",
+    val ar_type: String? = ""
 )

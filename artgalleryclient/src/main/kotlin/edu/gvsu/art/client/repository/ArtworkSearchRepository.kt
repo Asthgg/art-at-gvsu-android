@@ -14,6 +14,8 @@ import edu.gvsu.art.db.ArtGalleryDatabase
 interface ArtworkSearchRepository {
     suspend fun search(query: String): Result<List<Artwork>>
     suspend fun featured(): Result<List<Artwork>>
+
+    suspend fun augmented(): Result<List<Artwork>>
 }
 
 class DefaultArtworkSearchRepository(
@@ -37,6 +39,19 @@ class DefaultArtworkSearchRepository(
         return request { client.fetchFeaturedArt() }.fold(
             onSuccess = { cacheAndFindFeaturedArt(it) },
             onFailure = { Result.failure(it) }
+        )
+    }
+
+    override suspend fun augmented(): Result<List<Artwork>> {
+        val featured = table.findLatest().executeAsOneOrNull()
+
+        if (featured != null && isFreshCache(featured.created_at)) {
+            return Result.success(convertFromFeaturedArt(moshi, featured))
+        }
+
+        return request { client.fetchAugmentedArt() }.fold(
+                onSuccess = { cacheAndFindFeaturedArt(it) },
+                onFailure = { Result.failure(it) }
         )
     }
 

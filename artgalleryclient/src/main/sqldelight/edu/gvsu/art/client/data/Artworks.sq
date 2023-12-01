@@ -19,7 +19,11 @@ CREATE TABLE  IF NOT EXISTS Artworks (
   media_medium_url TEXT,
   media_large_url TEXT,
   thumbnail_url TEXT,
-  created_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  ar_digital_asset TEXT,
+  ar_3d_file TEXT,
+  ar_coordinates TEXT,
+  ar_type TEXT
 );
 
 CREATE INDEX index_artworks_id ON Artworks(id);
@@ -46,9 +50,17 @@ INSERT OR REPLACE INTO Artworks(
   media_medium_url,
   media_large_url,
   thumbnail_url,
-  related_objects
+  related_objects,
+  ar_digital_asset,
+  ar_3d_file,
+  ar_coordinates,
+  ar_type
 )
 VALUES (
+  ?,
+  ?,
+  ?,
+  ?,
   ?,
   ?,
   ?,
