@@ -6,6 +6,7 @@ import edu.gvsu.art.client.Artwork
 import edu.gvsu.art.client.repository.ArtworkRepository
 import edu.gvsu.art.client.repository.ArtworkSearchRepository
 import edu.gvsu.art.client.repository.FavoritesRepository
+import edu.gvsu.art.client.repository.augmented.AugmentedArtworkRepository
 import edu.gvsu.art.gallery.lib.Async
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -45,6 +46,21 @@ fun useArtwork(id: String): Pair<Artwork, Boolean> {
     }
 
     return Pair(Artwork(), true)
+}
+
+
+@Composable
+fun useAugmentedArtwork(artwork: Artwork): Pair<Boolean, () -> Unit> {
+    val repository = get<AugmentedArtworkRepository>()
+    val (isAugmented, setAugmented) = remember { mutableStateOf(false) }
+
+    LaunchedEffect(artwork) {
+        withContext(Dispatchers.IO) {
+            setAugmented(repository.isAugmented(artwork))
+        }
+    }
+
+    return Pair(isAugmented, { print("Artwork is agmented: ${isAugmented}")})
 }
 
 @Composable

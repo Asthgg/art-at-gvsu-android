@@ -65,7 +65,7 @@ sealed class TabScreen(
             Browse,
             Tours,
             Search,
-            Favorites,
+            Favorites
         )
 
         fun findSelected(navDestination: NavDestination?): TabScreen {

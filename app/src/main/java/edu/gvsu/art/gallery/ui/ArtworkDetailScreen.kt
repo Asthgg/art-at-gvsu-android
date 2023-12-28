@@ -23,11 +23,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import com.google.accompanist.pager.*
 import edu.gvsu.art.client.Artwork
 import edu.gvsu.art.gallery.DetailDivider
 import edu.gvsu.art.gallery.R
+import edu.gvsu.art.gallery.arartwork.augmentedIntent
+import edu.gvsu.art.gallery.arartwork.buildConfiguration
+//import edu.gvsu.art.gallery.arartwork.navigateToAugmentedArtwork
 import edu.gvsu.art.gallery.extensions.openGoogleMaps
 import edu.gvsu.art.gallery.lib.MediaTypes
 import edu.gvsu.art.gallery.lib.VideoPool
@@ -180,6 +184,9 @@ fun ArtworkDetailBody(
         navController.navigateToArtworkDetail(currentTab, artworkID)
     }
 
+    val augmentedArtworkConfiguration = buildConfiguration(artwork)
+
+
     Box(modifier = Modifier
         .padding(top = 16.dp)
         .padding(horizontal = 16.dp)
@@ -188,7 +195,9 @@ fun ArtworkDetailBody(
         ArtworkDetailTitleRow(
             artwork = artwork,
             isFavorite = isFavorite,
-            toggleFavorite = toggleFavorite
+            toggleFavorite = toggleFavorite,
+            isAugmented = artwork.arDigitalAsset != null,
+            navigateToAugmentedArtwork = {  startActivity(context, augmentedIntent(augmentedArtworkConfiguration, context), null) }
         )
     }
     DetailDivider()
